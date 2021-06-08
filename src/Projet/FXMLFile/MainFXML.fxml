@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projet.ClassJava.MainFXMLController">
+    <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="659.0" style="-fx-background-color: TRANSPARENT;">
+         <children>
+            <AnchorPane layoutX="30.0" layoutY="26.0" prefHeight="502.0" prefWidth="589.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="47.0">
+               <children>
+                  <AnchorPane layoutX="293.0" layoutY="38.0" maxHeight="-Infinity" maxWidth="294.0" prefHeight="380.0" prefWidth="284.0" style="-fx-background-color: white; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="293.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="38.0">
+                     <children>
+                        <TextField fx:id="passwordField" layoutX="62.0" layoutY="162.0" prefHeight="28.0" prefWidth="199.0" promptText="user name" style="-fx-border-color: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12); -fx-background-radius: 1em; -fx-border-radius: 1em;" />
+                        <Button fx:id="submitButton" layoutX="97.0" layoutY="261.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: orange; -fx-background-radius: 1em;" text="LOGIN">
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="0.007633587786259542">
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color blue="0.1407299041748047" green="0.1407299041748047" red="0.9912280440330505" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill></Button>
+                        <PasswordField fx:id="usernameField" layoutX="62.0" layoutY="209.0" prefHeight="28.0" prefWidth="199.0" promptText="password" style="-fx-border-color: linear-gradient(to right top, #3e20a8, #372690, #332978, #30295f, #2d2947, #42324e, #553c55, #66475b, #a55d6a, #da7c64, #f5ac53, #ece753); -fx-background-radius: 1em; -fx-border-radius: 1em;" />
+                        <ImageView fitHeight="83.0" fitWidth="131.0" layoutX="87.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/undraw_Login_re_4vu2.png" />
+                           </image>
+                        </ImageView>
+                        <Button layoutX="249.0" layoutY="-3.0" mnemonicParsing="false" onAction="#exitProgramm" style="-fx-background-color: transperent;">
+                           <graphic>
+                              <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/icons8_cancel_48px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="34.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/icons8_userName_24px.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="37.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" rotate="56.3">
+                           <image>
+                              <Image url="@../icons/icons8_key_24px_2.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#575454" layoutX="126.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                  
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="24.0" layoutY="25.0" prefHeight="418.0" prefWidth="305.0" style="-fx-background-color: linear-gradient(to right top, #051937, #123261, #214d8f, #2f6abf, #3d89f2); -fx-background-radius: 1em;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="19.0">
+                     <children>
+                        <Text layoutX="91.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Staatliches; -fx-font-style: linear-gradient(to right top, #051937, #40225a, #881363, #c8004c, #eb3b12);;" text="échelons" wrappingWidth="123.14584350585938">
+                           <font>
+                              <Font name="Webdings" size="24.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0" startX="0.26349207560221355" startY="0.12380952380952381">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color blue="0.3117283880710602" green="1.0" red="0.9885287880897522" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="0.007633587786259542">
+                                       <color>
+                                          <Color blue="0.3117283880710602" green="1.0" red="0.9885287880897522" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Text>
+                        <Text layoutX="65.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Staatliches;" text="Management">
+                           <font>
+                              <Font name="Webdings" size="30.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0" startX="0.26349207560221355" startY="0.12380952380952381">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color blue="1.0" green="0.9672839641571045" red="0.9629629850387573" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="0.007633587786259542">
+                                       <color>
+                                          <Color blue="1.0" green="0.9672839641571045" red="0.9629629850387573" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Text>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="78.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/Logo_1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

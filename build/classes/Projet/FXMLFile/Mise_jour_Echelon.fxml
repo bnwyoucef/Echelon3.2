@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projet.ClassJava.Mise_jour_EchelonController">
+   <children>
+      <TableView fx:id="tableEchelon" layoutY="78.0" onMouseClicked="#clickedMouse" prefHeight="470.0" prefWidth="690.0">
+        <columns>
+          <TableColumn fx:id="nEchelon" prefWidth="75.0" text="Numéro" />
+          <TableColumn fx:id="nomEchelon" prefWidth="139.0" text="Nom" />
+            <TableColumn fx:id="nPrénom" prefWidth="161.0" text="Prénom" />
+            <TableColumn fx:id="nGrad" prefWidth="155.0" text="Grad" />
+            <TableColumn fx:id="nDernier" prefWidth="158.0" text="Dernier échelon" />
+        </columns>
+      </TableView>
+      <TextField fx:id="modifEchelon" layoutX="254.0" layoutY="40.0" prefHeight="25.0" prefWidth="183.0" />
+      <Text layoutX="124.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier echelon:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Button layoutX="448.0" layoutY="39.0" mnemonicParsing="false" onAction="#enrigistrer" text="Enregistrer" />
+   </children>
+</AnchorPane>

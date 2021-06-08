@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18 mai 2021, 09:16:34
+    Author     : yahoui
+*/
+@charset "UTF-8";
+root {
+	-fx-spacing:30;
+	-fx-background-color : lightyellow;
+	-fx-padding:20;
+	
+	
+}
+.button {
+    -fx-background-color: #0066ff;
+    -fx-text-fill: #FFF;
+    -fx-background-radius: 5;
+    -fx-font-size: 20px
+}
+
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Projet.ClassJava.AdminFXMLController">
+   <children>
+      <BorderPane fx:id="borderPane2" prefHeight="544.0" prefWidth="757.0">
+         <left>
+            <VBox prefHeight="544.0" prefWidth="285.0" spacing="20.0" style="-fx-background-color: linear-gradient(to right top, #051937, #123261, #214d8f, #2f6abf, #3d89f2);" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="miseJour" mnemonicParsing="false" onAction="#hundleActionButton" prefHeight="71.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="Mise a jour" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="35.0" top="30.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="historiqueBtn" layoutX="20.0" layoutY="30.0" mnemonicParsing="false" onAction="#hundleActionButton" prefHeight="71.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="Historique" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="35.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="modifierBtn" layoutX="10.0" layoutY="101.0" mnemonicParsing="false" onAction="#hundleActionButton" prefHeight="71.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="Modifier employee" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="35.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="AjouterAgentBtn" layoutX="10.0" layoutY="172.0" mnemonicParsing="false" onAction="#hundleActionButton" prefHeight="71.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="Ajouter user" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="35.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="ExitBtn" layoutX="10.0" layoutY="243.0" mnemonicParsing="false" onAction="#hundleActionButton" prefHeight="71.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="Exit" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="35.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
