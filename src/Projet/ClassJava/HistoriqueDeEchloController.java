@@ -145,7 +145,7 @@ public class HistoriqueDeEchloController implements Initializable {
         
         Class.forName("com.mysql.jdbc.Driver");
               
-              con=DriverManager.getConnection("jdbc:mysql://localhost/echelondb?UseUnicode=yes&characterEncoding=UTF-8","root","");
+              con=DriverManager.getConnection("jdbc:mysql://localhost/echelon?UseUnicode=yes&characterEncoding=UTF-8","root","");
               pst=con.prepareStatement("SELECT * FROM `historique`  where Id = "+Id);                       
               rs=pst.executeQuery();
 
