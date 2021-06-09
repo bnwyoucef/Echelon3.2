@@ -1,0 +1,162 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 31, 2021, 9:02:39 PM
+    Author     : idwar
+*/
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.button{
+    -fx-font-weight: bold;
+    -fx-background-color: blue;
+    -fx-background-radius: 5;
+    -fx-font-size:16;
+    -fx-text-fill:white;
+}
+
+.button:hover{
+   -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-font-size:16;
+    -fx-text-fill:black;
+    -fx-border-color: blue;
+    -fx-border-radius:5 ;
+    -fx-border-width: 3;
+}
+#reture{
+    -fx-background-color: darkgrey;
+    -fx-background-radius: 0;
+}
+#reture:hover{
+    -fx-background-color: red ;
+
+    -fx-background-radius: 0;
+    -fx-border-radius:0 ;
+    -fx-border-width: 0; 
+}
+#cancel{
+    -fx-background-color: grey;
+    -fx-background-radius: 0;
+}
+
+#cancel:hover{
+    -fx-background-color: red ;
+    
+    -fx-background-radius: 0;
+    
+    -fx-border-radius:0 ;
+    -fx-border-width: 0;
+ 
+}
+#recharche{
+    -fx-background-color: blue ;
+    -fx-background-radius: 0;
+}
+
+#recharche:hover{
+    -fx-background-color: greenyellow ;
+    
+    -fx-background-radius: 0;
+    -fx-border-radius:0 ;
+    -fx-border-width: 0;
+}
+.table-view {
+    -fx-background-color: white;
+}
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+.table-view .corner {
+    -fx-background-color: white;
+}
+.table-view .column-header-background{
+    -fx-background-color: transparent;
+   
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+.table-view .column-header {
+    -fx-background-color: white;  
+}
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+   
+}
+
+.table-row-cell: odd{
+    -fx-background-color: white;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell: even{
+    -fx-background-color: white;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell: hover {
+    -fx-background-color: #F2F2F2;
+    -fx-font-weight: bold;   
+    -fx-font-size : 15;
+}
+.table-row-cell:selected {
+    -fx-background-color: blue;
+     -fx-font-size : 14;
+}
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 0;
+}
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(to bottom, blue, windowframe);
+}
+.table-view .virtual-flow .scroll-bar:horizontal  {
+    -fx-background-color:  transparent;
+}
+.table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+  -fx-background-color: null;
+  -fx-background-radius: 0;
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+}
+
+.table-view *.scroll-bar:horizontal *.increment-arrow,
+.table-view *.scroll-bar:horizontal *.decrement-arrow {
+  -fx-background-color: null;
+  -fx-background-radius: 0;
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+  -fx-shape: null;
+}
+.text-field {
+    -fx-border-color:linear-gradient(blue);
+    -fx-border-width: 2;
+    
+   
+}
+.date-picker > .arrow-button > .arrow {
+    -fx-shape: "M0,0v9h9V0H0z M2,8H1V7h1V8z M2,6H1V5h1V6z M2,4H1V3h1V4z M4,8H3V7h1V8z M4,6H3V5h1V6z M4,4H3V3h1V4z M6,8H5V7h1V8z M6,6H5 V5h1V6z M6,4H5V3h1V4z M8,8H7V7h1V8z M8,6H7V5h1V6z M8,4H7V3h1V4z";
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.416667em 0.416667em 0.333333em 0.333333em; /* 5 5 4 4 */
+    -fx-scale-shape: true;
+}
+ .label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+
+}
