@@ -98,7 +98,58 @@ public class DbConnection {
             tableView.setItems(empList);
         }
     
-    
+           ////////////////////////////////////////new//////////////////////////
+       public ObservableList<Employee> getEmployeesList2(TextField nom,TextField prenom) throws SQLException{
+        ObservableList<Employee> list = FXCollections.observableArrayList();
+        Connection connection = getConnection();
+        String query = "";
+       query = "SELECT * FROM employeeposts WHERE Nom like '"+ nom.getText()+"' or Prénom like '" + prenom.getText()+"'";
+        
+        Statement st;
+        ResultSet rs;
+        try{
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            Employee employee;
+            
+                 while(rs.next()){
+                    employee = new Employee(rs.getInt("Numéro"),rs.getString("Nom"),rs.getString("Prénom"),rs.getString("Grade"),rs.getDate("DernierEchelon"));
+                    list.add(employee);
+            }
+            
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "getEmployeeList(): " + ex);
+        }
+        
+        return list;
+    }
+       public void EmployeVis( TableColumn<Employee, String> Nom,TableColumn<Employee, String> Prénom,
+        TableColumn<Employee, String> Grad,TableColumn<Employee, Date> DernierEchelon,TableView<Employee> tableView,String employeePost) 
+        throws SQLException{
+            ObservableList<Employee> empList = getEmployeesList(employeePost); 
+            
+            Nom.setCellValueFactory(new PropertyValueFactory<Employee,String>("nom"));
+            Prénom.setCellValueFactory(new PropertyValueFactory<Employee,String>("prénom"));
+            Grad.setCellValueFactory(new PropertyValueFactory<Employee,String>("Grad"));
+             DernierEchelon.setCellValueFactory(new PropertyValueFactory<Employee,Date>("dernier_echelon"));
+            tableView.setItems(empList);
+        }
+       public void EmployeRecharche( TableColumn<Employee, String> Nom,TableColumn<Employee, String> Prénom,
+        TableColumn<Employee, String> Grad,TableColumn<Employee, Date> DernierEchelon,TableView<Employee> tableView,TextField nom,TextField prenom) 
+        throws SQLException{
+            ObservableList<Employee> empList = getEmployeesList2(nom,prenom); 
+            
+            Nom.setCellValueFactory(new PropertyValueFactory<Employee,String>("nom"));
+            Prénom.setCellValueFactory(new PropertyValueFactory<Employee,String>("prénom"));
+            Grad.setCellValueFactory(new PropertyValueFactory<Employee,String>("Grad"));
+             DernierEchelon.setCellValueFactory(new PropertyValueFactory<Employee,Date>("dernier_echelon"));
+            tableView.setItems(empList);
+        }
+       public int MouseClickedrecharch(TableView<Employee> tableView) {
+          return Integer.valueOf(String.valueOf(tableView.getSelectionModel().getSelectedItem().getId()));
+         
+       }
+    /////////////////////////////////////////old******///////////////////////////////////
     private void excuteQuery(String query){
         Connection connection = getConnection();
         Statement st;
