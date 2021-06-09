@@ -60,7 +60,7 @@ public class AdminFXMLController implements Initializable {
     @FXML
     private void hundleActionButton(ActionEvent event) throws IOException {
        if(event.getSource().equals(historiqueBtn)){
-            Pane view = loader.getPage("historiqueDeEchlo");
+            Pane view = loader.getPage("recharche");
             borderPane2.setCenter(view);
         }else if(event.getSource().equals(modifierBtn)){
             Pane view = loader.getPage("Modifier_employee");
