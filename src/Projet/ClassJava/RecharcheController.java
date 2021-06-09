@@ -67,15 +67,14 @@ public class RecharcheController implements Initializable {
 
     @FXML
     private void recharch(ActionEvent event) throws SQLException {
-        /*if ((textnom.getText()!="")||(textprenom.getText()!="")){
-        conn1.EmployeRecharche(Nom, Prénom, Grad, DernierEchelon, tableVisualiser, textnom, textprenom);
-        }*/
-            conn1.EmployeVis( Nom, Prénom, Grad,DernierEchelon, tableVisualiser, "admin");
-            System.out.print("this is me******** " +textnom.getText().toString());
-            
-          if ((!textnom.getText().isEmpty())||(!textprenom.getText().isEmpty())){
-        conn1.EmployeRecharche(Nom, Prénom, Grad, DernierEchelon, tableVisualiser, textnom, textprenom);
+           conn1.EmployeVis( Nom, Prénom, Grad,DernierEchelon, tableVisualiser, "admin");
+                      
+          if ((textnom.getText().isEmpty())^(textprenom.getText().isEmpty())){
+        conn1.EmployeRecharche(Nom, Prénom, Grad, DernierEchelon, tableVisualiser, textnom, textprenom,"or");
         }  
+         if ((!textnom.getText().isEmpty())&&(!textprenom.getText().isEmpty())){
+        conn1.EmployeRecharche(Nom, Prénom, Grad, DernierEchelon, tableVisualiser, textnom, textprenom,"and");
+        } 
         
     }
     @FXML
