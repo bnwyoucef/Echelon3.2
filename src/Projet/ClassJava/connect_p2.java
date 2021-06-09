@@ -37,7 +37,7 @@ public class connect_p2 {
     public static Connection getConnection(){
 		        Connection connection;
 		        try{
-		            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/echelon","root","");
+		            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/echelondb","root","");
 		            return connection;
 		        }catch(SQLException ex){
 		            JOptionPane.showMessageDialog(null, "Somthing wrong in data base connection" + ex);
@@ -45,10 +45,11 @@ public class connect_p2 {
 		        }
 		    }
 		    
-		    public ObservableList<echelon> getechelonList(TextField id_EMP) throws SQLException{
+		    public ObservableList<echelon> getechelonList(int id_EMP) throws SQLException{
 		        ObservableList<echelon> list = FXCollections.observableArrayList();
 		        Connection connection = getConnection();
-		        String query = "Select * from historique where Id = "+id_EMP.getText();
+                        
+		        String query = "Select * from historique where Id = "+id_EMP;
 		        Statement st;
 		        ResultSet rs;    
 		        try{
@@ -64,7 +65,7 @@ public class connect_p2 {
 		        }
 		        return list;
 		    }
-		    public void showechelons(TableColumn<echelon, Integer>num,TableColumn<echelon,Date> ladate ,TableView<echelon> tableView,TextField id_EMP)throws SQLException{
+		    public void showechelons(TableColumn<echelon, Integer>num,TableColumn<echelon,Date> ladate ,TableView<echelon> tableView,int id_EMP)throws SQLException{
 	                 ObservableList<echelon> List = getechelonList(id_EMP); 		             
 		               num.setCellValueFactory(new  PropertyValueFactory<echelon,Integer>("num_echelon"));
 		              
@@ -77,7 +78,7 @@ public class connect_p2 {
 		    
     ///************************************************************************************************
     
-       public void InsertRecord(TextField txtId,TextField txtNum,DatePicker sdate) throws SQLException, ParseException{
+       public void InsertRecord(int txtId,TextField txtNum,DatePicker sdate) throws SQLException, ParseException{
            String query= "";
            int x;
            Date d;
@@ -90,18 +91,18 @@ public class connect_p2 {
              
              if(sqlsd.compareTo(sqld) <= 0){
                  
-           query = "Select MAX(num_echelon) as maximum from historique where Id = "+txtId.getText();
+           query = "Select MAX(num_echelon) as maximum from historique where Id = "+txtId;
            x=excuteQueryWithResult(query);            
-           query = "Select date_echelon as ndate from historique where Id = "+txtId.getText()+" and num_echelon= "+x;
+           query = "Select date_echelon as ndate from historique where Id = "+txtId+" and num_echelon= "+x;
            d = excuteQuerygetDATE(query);
            LocalDate u1 = d.toLocalDate();
            
            if( ChronoUnit.MONTHS.between(u1,u2 )>30){
            x=x+1;
            if (x<=12){
-           query = "INSERT INTO historique (Id, num_echelon ,date_echelon) values ('"+txtId.getText()+"','"+x+"','"+ d1+"')";
+           query = "INSERT INTO historique (Id, num_echelon ,date_echelon) values ('"+txtId+"','"+x+"','"+ d1+"')";
             excuteQuery(query);
-            query = "UPDATE employeeposts SET DernierEchelon= '" + d1 + "' WHERE Numéro= "+ txtId.getText();
+            query = "UPDATE employeeposts SET DernierEchelon= '" + d1 + "' WHERE Numéro= "+ txtId;
         excuteQuery(query);
         }
            }  
@@ -110,54 +111,54 @@ public class connect_p2 {
     }
        ///////////////////////////////////////////////////////////////////////////////// 
     
-          public void UpdateRecord(TextField txtId,TextField txtNum,DatePicker sdate) throws SQLException{
+          public void UpdateRecord(int txtId,TextField txtNum,DatePicker sdate) throws SQLException{
           int x;
           LocalDate d1 = sdate.getValue();
           String d2 = d1.toString();
-    String query = "UPDATE historique SET date_echelon= '"+ d2 + " 'WHERE Id= '"+ txtId.getText()+"' and num_echelon= "+txtNum.getText();
+    String query = "UPDATE historique SET date_echelon= '"+ d2 + " 'WHERE Id= '"+ txtId+"' and num_echelon= "+txtNum.getText();
            excuteQuery(query);
-           query = "Select MAX(num_echelon) as maximum from historique where Id = "+txtId.getText();
+           query = "Select MAX(num_echelon) as maximum from historique where Id = "+txtId;
            x=excuteQueryWithResult(query);
            if (x==Integer.parseInt(txtNum.getText())){
-           query = "UPDATE employeeposts SET DernierEchelon= '" + d2 + "' WHERE Numéro= "+ txtId.getText();
+           query = "UPDATE employeeposts SET DernierEchelon= '" + d2 + "' WHERE Numéro= "+ txtId;
         excuteQuery(query);
            }
     }
        //////////////////////////////////////////////////////////////////////////////////
-    public void DeleteRecord(TextField txtId) throws SQLException{
+    public void DeleteRecord(int txtId) throws SQLException{
       int x;
      Date d;
      
-         String  query = "Select MAX(num_echelon) as maximum from historique where Id = "+txtId.getText();
+         String  query = "Select MAX(num_echelon) as maximum from historique where Id = "+txtId;
            x=excuteQueryWithResult(query);
          if (x!=1){
-             query = "DELETE FROM historique WHERE Id= "+txtId.getText()+" and num_echelon = "+x;//ما تخربش يا حيوان
+             query = "DELETE FROM historique WHERE Id= "+txtId+" and num_echelon = "+x;//ما تخربش يا حيوان
          excuteQuery(query);
              x=x-1;
-             query = "Select date_echelon as ndate from historique where Id = "+txtId.getText()+" and num_echelon= "+x;
+             query = "Select date_echelon as ndate from historique where Id = "+txtId+" and num_echelon= "+x;
              d = excuteQuerygetDATE(query);   
              LocalDate u1 =d.toLocalDate();
              String u2 = u1.toString();
-            query = "UPDATE employeeposts SET DernierEchelon= '"+u2+"' WHERE Numéro= "+ txtId.getText();
+            query = "UPDATE employeeposts SET DernierEchelon= '"+u2+"' WHERE Numéro= "+ txtId;
           
        excuteQuery(query);
         }
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////
-    public String getnom(TextField txtId) throws SQLException{
+    public String getnom(int txtId) throws SQLException{
         String query;
         String str;
-        query = "Select Nom as nom from employeeposts where Numéro = "+txtId.getText();
+        query = "Select Nom as nom from employeeposts where Numéro = "+txtId;
         return excuteQuerygetsname( query);
         
         
     }
-    public String getprenom(TextField txtId) throws SQLException{
+    public String getprenom(int txtId) throws SQLException{
         String query;
         String str;
         
         
-        query = "Select Prénom as nom from employeeposts where Numéro = "+txtId.getText();
+        query = "Select Prénom as nom from employeeposts where Numéro = "+txtId;
         return excuteQuerygetsname( query);
     }
 //***********************************************************************************************************************
@@ -226,9 +227,7 @@ public class connect_p2 {
          
 }
     public void MouseClicked(TextField txtNum,DatePicker sdate,TableView<echelon> tableView) {
-        txtNum.setText(String.valueOf(tableView.getSelectionModel().getSelectedItem().getNum_echelon()));
-      //  txtNum.setText(String.valueOf(tableView.getSelectionModel().getSelectedItem().getNum_echelon()));
-       // txtDate.setText(String.valueOf(tableView.getSelectionModel().getSelectedItem().getDate_echelon()));  
+        txtNum.setText(String.valueOf(tableView.getSelectionModel().getSelectedItem().getNum_echelon()));  
         sdate.setValue(tableView.getSelectionModel().getSelectedItem().getDate_echelon().toLocalDate());
         
     }
