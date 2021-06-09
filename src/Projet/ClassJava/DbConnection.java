@@ -99,12 +99,16 @@ public class DbConnection {
         }
     
            ////////////////////////////////////////new//////////////////////////
-       public ObservableList<Employee> getEmployeesList2(TextField nom,TextField prenom) throws SQLException{
+       public ObservableList<Employee> getEmployeesList2(TextField nom,TextField prenom,String str) throws SQLException{
         ObservableList<Employee> list = FXCollections.observableArrayList();
         Connection connection = getConnection();
         String query = "";
+        if (str=="or"){
        query = "SELECT * FROM employeeposts WHERE Nom like '"+ nom.getText()+"' or Prénom like '" + prenom.getText()+"'";
-        
+        }
+        if (str=="and"){
+       query = "SELECT * FROM employeeposts WHERE Nom like '"+ nom.getText()+"' and Prénom like '" + prenom.getText()+"'";
+        }
         Statement st;
         ResultSet rs;
         try{
@@ -135,9 +139,9 @@ public class DbConnection {
             tableView.setItems(empList);
         }
        public void EmployeRecharche( TableColumn<Employee, String> Nom,TableColumn<Employee, String> Prénom,
-        TableColumn<Employee, String> Grad,TableColumn<Employee, Date> DernierEchelon,TableView<Employee> tableView,TextField nom,TextField prenom) 
+        TableColumn<Employee, String> Grad,TableColumn<Employee, Date> DernierEchelon,TableView<Employee> tableView,TextField nom,TextField prenom,String str) 
         throws SQLException{
-            ObservableList<Employee> empList = getEmployeesList2(nom,prenom); 
+            ObservableList<Employee> empList = getEmployeesList2(nom,prenom,str); 
             
             Nom.setCellValueFactory(new PropertyValueFactory<Employee,String>("nom"));
             Prénom.setCellValueFactory(new PropertyValueFactory<Employee,String>("prénom"));
@@ -150,6 +154,7 @@ public class DbConnection {
          
        }
     /////////////////////////////////////////old******///////////////////////////////////
+   
     private void excuteQuery(String query){
         Connection connection = getConnection();
         Statement st;
