@@ -37,7 +37,7 @@ public class connect_p2 {
     public static Connection getConnection(){
 		        Connection connection;
 		        try{
-		            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/echelondb","root","");
+		            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/echelon","root","");
 		            return connection;
 		        }catch(SQLException ex){
 		            JOptionPane.showMessageDialog(null, "Somthing wrong in data base connection" + ex);
