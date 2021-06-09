@@ -29,6 +29,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,8 +40,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -48,8 +51,6 @@ import javafx.scene.input.MouseEvent;
  */
 public class HistoriqueDeEchloController implements Initializable {
     private TableView<echelon> ModTableHistorique;
-    @FXML
-    private TextField ModIdTextField;
     @FXML
     private TextField ModNumEchelonTextField;
     
@@ -60,8 +61,7 @@ public class HistoriqueDeEchloController implements Initializable {
     private Button ModModifierBtn;
     @FXML
     private Button ModSuprimerBtn;
-    @FXML
-    private Button searchBtn;
+   
     private connect_p2 conn = new connect_p2();
     @FXML
     private TableView<echelon> table_h;
@@ -79,36 +79,50 @@ public class HistoriqueDeEchloController implements Initializable {
     private Label putnom;
     @FXML
     private Label putprenom;
+    int Id=passer.data;
+   
+     private FxmlLoader loader = new FxmlLoader();
     @FXML
-    private Label test;
-    
+    private AnchorPane scene01;
+    @FXML
+    private Button reture;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   
-       }    
+     
+        try {
+            conn.showechelons(num, ladate, table_h, Id);
+             putnom.setText(conn.getnom(Id));
+           
+           putprenom.setText(conn.getprenom(Id));
+        } catch (SQLException ex) {
+            Logger.getLogger(HistoriqueDeEchloController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       }     
 
- 
+       @FXML
+    private void reture(ActionEvent event) {
+     AnchorPane pane =  (AnchorPane) loader.getPage("recharche");
+       scene01.getChildren().setAll(pane);
+    }
 
     @FXML
     void buttonsClicked(ActionEvent event) throws SQLException, ParseException {
         if(event.getSource().equals(ModAjouterBtn)){
-    conn.InsertRecord(ModIdTextField, ModNumEchelonTextField, selectdate);
-    conn.showechelons(num, ladate, table_h, ModIdTextField);
-    }else if(event.getSource().equals(searchBtn)){
-           conn.showechelons(num, ladate, table_h, ModIdTextField);
+    conn.InsertRecord(Id, ModNumEchelonTextField, selectdate);
+    conn.showechelons(num, ladate, table_h, Id);
+    
          
-           putnom.setText(conn.getnom(ModIdTextField));
-           
-           putprenom.setText(conn.getprenom(ModIdTextField));
+          
  }else if(event.getSource().equals(ModSuprimerBtn)){
-           conn.DeleteRecord(ModIdTextField);
-           conn.showechelons(num, ladate, table_h, ModIdTextField);
+           conn.DeleteRecord(Id);
+           conn.showechelons(num, ladate, table_h, Id);
     }else if(event.getSource().equals(ModModifierBtn)){
-           conn.UpdateRecord(ModIdTextField, ModNumEchelonTextField, selectdate);
-           conn.showechelons(num, ladate, table_h, ModIdTextField);
+           conn.UpdateRecord(Id, ModNumEchelonTextField, selectdate);
+           conn.showechelons(num, ladate, table_h, Id);
     }
     }
    
@@ -131,8 +145,8 @@ public class HistoriqueDeEchloController implements Initializable {
         
         Class.forName("com.mysql.jdbc.Driver");
               
-              con=DriverManager.getConnection("jdbc:mysql://localhost/echelon?UseUnicode=yes&characterEncoding=UTF-8","root","");
-              pst=con.prepareStatement("SELECT * FROM `historique`  where Id = "+ModIdTextField.getText());                       
+              con=DriverManager.getConnection("jdbc:mysql://localhost/echelondb?UseUnicode=yes&characterEncoding=UTF-8","root","");
+              pst=con.prepareStatement("SELECT * FROM `historique`  where Id = "+Id);                       
               rs=pst.executeQuery();
 
         Document doc=new Document();
@@ -142,8 +156,8 @@ public class HistoriqueDeEchloController implements Initializable {
       doc.open();
       
       
-        nom = conn.getnom(ModIdTextField);
-        prenom = conn.getprenom(ModIdTextField);
+        nom = conn.getnom(Id);
+        prenom = conn.getprenom(Id);
         boolean add = doc.add(new Paragraph(" "));
         doc.add(new Paragraph("esi sba"));
         doc.add(new Paragraph(" "));
@@ -171,24 +185,11 @@ public class HistoriqueDeEchloController implements Initializable {
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setBackgroundColor(BaseColor.WHITE);
         table.addCell(cell);
-        
        
-        
-        
-       
-        
-        
-        
-        
         //////////////////////////////////////////////////////////////////
         
-       
-        
-        
          while(rs.next()) {  
-      
-          
-          
+        
       cell= new PdfPCell(new Phrase(rs.getString("num_echelon").toString(),FontFactory.getFont("Ariel",13)));
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setBackgroundColor(BaseColor.WHITE);
@@ -201,27 +202,10 @@ public class HistoriqueDeEchloController implements Initializable {
         table.addCell(cell);
         
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+          
         doc.add(table);
         doc.close();
         Desktop.getDesktop().open(new File("C:\\echelons\\echelons.pdf"));
-      
-        
-        
-        
-    }
-    
-
-
-    
-        
+         
+    } 
 }
